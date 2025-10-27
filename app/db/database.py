@@ -10,12 +10,12 @@ url_object = URL.create(
     host=config.DB_HOST,
     port=config.DB_PORT,
     username=config.DB_USER,
-    password=config.DB_PASSWORD,
+    password=config.DB_PASS,
     database=config.DB_NAME
 )
 
 engine = create_engine(url=url_object)
 
-BASE = declarative_base()
+Base = declarative_base()
 
-localSession = sessionmaker(bind=engine)  
+LocalSession = sessionmaker(bind=engine)  
