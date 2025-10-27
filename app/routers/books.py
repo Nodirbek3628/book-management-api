@@ -24,7 +24,7 @@ def read_books(db: Session = Depends(get_db)):
 def read_book(book_id: int, db: Session = Depends(get_db)):
     book = crud.get_book(db, book_id)
     if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+        raise HTTPException(status_code=404, detail="kitob topilmadi")
     return book
 
 @router.post("/", response_model=schemas.BookBase)
@@ -35,7 +35,7 @@ def create_book(book: schemas.BookCreate, db: Session = Depends(get_db)):
 def update_book(book_id: int, updated_book: schemas.BookCreate, db: Session = Depends(get_db)):
     book = crud.update_book(db, book_id, updated_book)
     if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+        raise HTTPException(status_code=404, detail="kitob topilmadi")
     return book
 
 
@@ -43,5 +43,5 @@ def update_book(book_id: int, updated_book: schemas.BookCreate, db: Session = De
 def delete_book(book_id: int, db: Session = Depends(get_db)):
     success = crud.delete_book(db, book_id)
     if not success:
-        raise HTTPException(status_code=404, detail="Book not found")
-    return {"message": "Book deleted successfully"}
+        raise HTTPException(status_code=404, detail="kitob topilmadi")
+    return {"message": "kitop o'chirildi"}
